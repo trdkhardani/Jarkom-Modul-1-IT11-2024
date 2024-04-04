@@ -54,4 +54,23 @@ Pertanyaan terakhir yaitu email dan password yang dapat melakukan login. Kami me
 Semua jawaban ini, kami masukkan pada nc dan didapatkan hasil flag seperti berikut.
 ![Evi 5](https://github.com/trdkhardani/Jarkom-Modul-1-IT11-2024/blob/main/image/eviden5.png)
 ## Whoami
+Kami menemukan nama dari attacker setelah melakukan filter **tcp.stream(nomor)** dan menemukannya pada **tcp.stream eq 7**, tapi masih terenkripsi
+![whoami](https://github.com/trdkhardani/Jarkom-Modul-1-IT11-2024/blob/main/image/attacker1.png)
+
+Setelah itu kami melakukan decode menggunakan base64 dan didapatkan nama dari attacker yaitu **Paul Atreides**.
+![whoami2](https://github.com/trdkhardani/Jarkom-Modul-1-IT11-2024/blob/main/image/attacker2.png)
+
+Dan kemudian kami masukkan nama tersebut pada nc dan didapatkan hasil flag seperti berikut.
+![whoami3](https://github.com/trdkhardani/Jarkom-Modul-1-IT11-2024/blob/main/image/attacker3.png)
 ## Secret
+Kami menemukan pesan tersembunyi dari attacker dengan melakukan **export object**.
+![secret1](https://github.com/trdkhardani/Jarkom-Modul-1-IT11-2024/blob/main/image/secret%201.png)
+
+Didapatkan 2 file seperti berikut.
+![secret2](https://github.com/trdkhardani/Jarkom-Modul-1-IT11-2024/blob/main/image/secret%201_2.png)
+
+Kemudian kami save file yang bertuliskan **mirza.jpg** dan didapatkan gambar yang berisi pesan seperti dibawah ini. 
+![secret3](https://github.com/trdkhardani/Jarkom-Modul-1-IT11-2024/blob/main/image/mirza.jpg)
+
+Kata **MIO MIRZA** kami inputkan pada nc dan didapatkan hasil flag seperti berikut ini.
+![secret4](https://github.com/trdkhardani/Jarkom-Modul-1-IT11-2024/blob/main/image/secret%202.png)
