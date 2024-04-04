@@ -44,6 +44,27 @@ Dan ditemukan PASS yang digunakan untuk menjawab pertanyaan yang ada pada netcat
 
 ![AAF 3](./image/atmatpftp3.png)
 ## Fuzz
+Pertama-tama, kami membuka file capture.pcap dengan Wireshark. Kemudian, memasukkan “http” sebagai keyword pada display filter.
+
+![FUZZ 1](./image/fuzz1.png)
+
+Kami menemukan kumpulan requests di bagian yang paling atas, diketahui dari **Request Header POST / HTTP/1.1 dan application/x-www-form-urlencoded**. IP Source request tersebut merupakan jawaban untuk soal 1 pada netcat. Untuk jawaban soal 2, diketahui dari port HTTP by default, yaitu 80. Untuk jawaban soal 3, diketahui dari endpoint yang tertera pada request (‘/’).
+
+Untuk jawaban soal 4, diketahui dari follow HTTP Stream salah satu dari requests tersebut, tetapi berupa singkatan dari software tertera, yaitu **ffuf**.
+
+![FUZZ 2](./image/fuzz2.png)
+
+Terakhir, jawaban soal 5, diketahui dengan cara memasukkan keywords **“ip.src == 172.20.0.2 && http”** supaya hasil menunjukkan response dari host (172.20.0.2) dan ber-protokol HTTP.
+
+![FUZZ 3](./image/fuzz3.png)
+
+Kami scroll sampai menemukan response yang paling berbeda di antara semuanya. Dan kami menemukan **HTTP Response 302 Found**. Kemudian, kami follow HTTP stream dari response tersebut.
+
+![FUZZ 4](./image/fuzz4.png)
+
+Di dalam stream ini, kami melakukan pencarian spesifik (Find) dengan keyword **“302 f”** untuk menemukan HTTP Response 302 Found guna mengetahui kredensial yang benar, sebagai jawaban dari soal 5.
+
+![FUZZ 5](./image/fuzz5.png)
 ## How Many Packets?
 Pada filter dimasukkan keyword **ftp.response.code == 331** untuk melakukan list semua response yang membutuhkan password untuk melanjutkan code 331. Dan didapatkan terdapat **934** packet yang muncul dari hasil response.
 ![HMP 1](https://github.com/trdkhardani/Jarkom-Modul-1-IT11-2024/blob/main/image/hom%20many%201.png)
