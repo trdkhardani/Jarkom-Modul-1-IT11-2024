@@ -48,7 +48,7 @@ Pertama-tama, kami membuka file capture.pcap dengan Wireshark. Kemudian, memasuk
 
 ![FUZZ 1](./image/fuzz1.png)
 
-Kami menemukan kumpulan requests di bagian yang paling atas, diketahui dari **Request Header POST / HTTP/1.1 dan application/x-www-form-urlencoded**. IP Source request tersebut merupakan jawaban untuk soal 1 pada netcat. Untuk jawaban soal 2, diketahui dari port HTTP by default, yaitu 80. Untuk jawaban soal 3, diketahui dari endpoint yang tertera pada request (‘/’).
+Kami menemukan kumpulan requests di bagian yang paling atas, diketahui dari **Request Header POST / HTTP/1.1 dan application/x-www-form-urlencoded**. IP Source request tersebut merupakan jawaban untuk soal 1 pada netcat. Untuk jawaban soal 2, diketahui dari port **HTTP by default, yaitu 80**. Untuk jawaban soal 3, diketahui dari endpoint yang tertera pada request **(‘/’)**.
 
 Untuk jawaban soal 4, diketahui dari follow HTTP Stream salah satu dari requests tersebut, tetapi berupa singkatan dari software tertera, yaitu **ffuf**.
 
