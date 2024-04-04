@@ -7,17 +7,28 @@
 | 5027221008 | Jeany Aurellia Putri Dewati |
 
 ## Daftar Isi
-- [Creds](#creds)
-- [ATM or ATP or FTP ?🤔](#atm-or-atp-or-ftp-)
-- [Fuzz](#fuzz)
-- [How Many Packets?](#how-many-packets)
-- [Trace Him](#trace-him)
-- [Malwleowleo](#malwleowleo)
-- [Evidence](#evidence)
-- [Whoami](#whoami)
-- [Secret](#secret)
+- [Jarkom-Modul-1-IT11-2024](#jarkom-modul-1-it11-2024)
+  - [Kelompok IT11](#kelompok-it11)
+  - [Daftar Isi](#daftar-isi)
+  - [Creds](#creds)
+  - [ATM or ATP or FTP ?🤔](#atm-or-atp-or-ftp-)
+  - [Fuzz](#fuzz)
+  - [How Many Packets?](#how-many-packets)
+  - [Trace Him](#trace-him)
+  - [Malwleowleo](#malwleowleo)
+  - [Evidence](#evidence)
+  - [Whoami](#whoami)
+  - [Secret](#secret)
 
 ## Creds
+Pertama-tama, kami membuka file evidence.pcap dengan Wireshark. Kemudian, memasukkan **ftp** sebagai keyword pada display filter.
+![CR 1](./image/creds1.png)
+Kami scroll ke bawah sampai menemukan response “Login successful”. Sebenarnya menggunakan filter **ftp.response.code == 230** merupakan cara yang lebih tepat dan cepat untuk menemukan respons login successful karena 230 response code dalam FTP artinya login berhasil. Setelah itu, kami follow TCP Stream dari packet yang mengandung info tersebut.
+
+![CR 2](./image/creds2.png)
+
+Dan ditemukan USER dan PASS yang digunakan untuk menjawab pertanyaan yang ada pada netcat 10.15.40.20 10007.
+![CR 2](./image/creds3.png)
 ## ATM or ATP or FTP ?🤔
 ## Fuzz
 ## How Many Packets?
