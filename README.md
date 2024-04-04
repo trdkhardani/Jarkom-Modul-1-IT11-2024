@@ -22,14 +22,27 @@
 
 ## Creds
 Pertama-tama, kami membuka file evidence.pcap dengan Wireshark. Kemudian, memasukkan **ftp** sebagai keyword pada display filter.
+
 ![CR 1](./image/creds1.png)
 Kami scroll ke bawah sampai menemukan response “Login successful”. Sebenarnya menggunakan filter **ftp.response.code == 230** merupakan cara yang lebih tepat dan cepat untuk menemukan respons login successful karena 230 response code dalam FTP artinya login berhasil. Setelah itu, kami follow TCP Stream dari packet yang mengandung info tersebut.
 
 ![CR 2](./image/creds2.png)
 
 Dan ditemukan USER dan PASS yang digunakan untuk menjawab pertanyaan yang ada pada netcat 10.15.40.20 10007.
-![CR 2](./image/creds3.png)
+
+![CR 3](./image/creds3.png)
 ## ATM or ATP or FTP ?🤔
+Langkah-langkah penyelesaian soal ini sangat mirip dengan solusi soal “creds”. Pertama-tama, kami membuka file evidence.pcap dengan Wireshark. Kemudian, memasukkan “ftp” sebagai keyword pada display filter.
+
+![AAF 1](./image/atmatpftp1.png)
+
+Kami scroll sampai bawah sendiri, dan menemukan response “Login successfull”. Atau dengan cara yang lebih cepat dengan display filter yang digunakan untuk menyelesaikan soal [Creds](#creds). Setelah itu, kami follow TCP Stream.
+
+![AAF 2](./image/atmatpftp2.png)
+
+Dan ditemukan PASS yang digunakan untuk menjawab pertanyaan yang ada pada netcat 10.15.40.20 10004.
+
+![AAF 3](./image/atmatpftp3.png)
 ## Fuzz
 ## How Many Packets?
 Pada filter dimasukkan keyword **ftp.response.code == 331** untuk melakukan list semua response yang membutuhkan password untuk melanjutkan code 331. Dan didapatkan terdapat **934** packet yang muncul dari hasil response.
